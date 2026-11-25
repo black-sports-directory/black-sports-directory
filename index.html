@@ -1,0 +1,487 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Find Black-led sports clubs, community groups and sport businesses across the UK. Free to search, free to get listed.">
+<meta property="og:title" content="Black Sports Directory UK">
+<meta property="og:description" content="Find your sport. Find your people. Black-led sports clubs, crews and businesses across the UK.">
+<meta property="og:type" content="website">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Black Sports Directory UK</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&display=swap">
+<style>
+/* Layout: a pitch-green masthead with a lane-line motif, then a single readable column that widens to a card grid for listings. */
+:root {
+  --bg: #f5f6f1;
+  --surface: #ffffff;
+  --ink: #15211c;
+  --muted: #56635d;
+  --line: #dde2da;
+  --pitch: #0f4a37;
+  --pitch-ink: #f3f6ef;
+  --gold: #e9a908;
+  --gold-ink: #241a00;
+  --chip: #e8eee6;
+  --warn-bg: #fff4d6;
+  --warn-ink: #5c4300;
+  --display: "Barlow Condensed", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+  --body: "Barlow", "Helvetica Neue", Arial, sans-serif;
+  --radius: 10px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1613; --surface: #17211c; --ink: #e9efe9; --muted: #a2b0a8; --line: #2a3832;
+    --pitch: #0b3a2b; --pitch-ink: #eef4ee; --gold: #f2b928; --gold-ink: #1d1500;
+    --chip: #22302a; --warn-bg: #3a2f10; --warn-ink: #f5dc9a; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f1613; --surface: #17211c; --ink: #e9efe9; --muted: #a2b0a8; --line: #2a3832;
+  --pitch: #0b3a2b; --pitch-ink: #eef4ee; --gold: #f2b928; --gold-ink: #1d1500;
+  --chip: #22302a; --warn-bg: #3a2f10; --warn-ink: #f5dc9a; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 17px; line-height: 1.55; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--pitch); }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; border-radius: 4px; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3 { font-family: var(--display); line-height: 1.02; text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(2.6rem, 7vw, 4.6rem); font-weight: 800; text-transform: uppercase; letter-spacing: .005em; }
+h2 { font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 700; text-transform: uppercase; }
+h3 { font-size: 1.45rem; font-weight: 700; }
+p { margin: 0; }
+.lede { font-size: 1.15rem; max-width: 62ch; }
+.eyebrow { font-family: var(--display); font-weight: 700; font-size: .95rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+
+/* Header */
+header.site { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--pitch); color: var(--pitch-ink); }
+header.site .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px 24px; flex-wrap: wrap; padding-block: 12px; }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-family: var(--display); font-weight: 800; font-size: 1.35rem; text-transform: uppercase; letter-spacing: .02em; }
+.brand svg { flex: none; }
+nav.main { display: flex; gap: 4px; flex-wrap: wrap; }
+nav.main a { text-decoration: none; font-family: var(--display); font-weight: 600; font-size: 1.1rem; letter-spacing: .03em; text-transform: uppercase; padding: 6px 10px; border-radius: 6px; opacity: .85; }
+nav.main a:hover { opacity: 1; background: rgba(255,255,255,.08); }
+nav.main a[aria-current="page"] { opacity: 1; box-shadow: inset 0 -3px 0 var(--gold); border-radius: 0; }
+
+/* Hero */
+.hero { background: var(--pitch); color: var(--pitch-ink); position: relative; overflow: hidden; }
+.hero .wrap { padding-block: 56px 64px; display: grid; gap: 22px; position: relative; }
+.hero .lanes { position: absolute; inset: 0; background: repeating-linear-gradient(180deg, transparent 0 46px, rgba(255,255,255,.07) 46px 48px); pointer-events: none; }
+.hero .lanes::after { content: ""; position: absolute; top: 0; bottom: 0; right: 14%; width: 3px; background: rgba(255,255,255,.12); }
+.hero h1 span { color: var(--gold); }
+.hero .lede { color: var(--pitch-ink); opacity: .92; }
+.actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-family: var(--display); font-weight: 700; font-size: 1.15rem; letter-spacing: .04em; text-transform: uppercase; padding: 11px 18px; border-radius: 8px; border: 2px solid transparent; cursor: pointer; }
+.btn.primary { background: var(--gold); color: var(--gold-ink); }
+.btn.primary:hover { filter: brightness(1.06); }
+.btn.ghost { border-color: currentColor; color: inherit; background: transparent; }
+.btn.ghost:hover { background: rgba(127,127,127,.12); }
+
+section.block { padding-block: 48px; }
+section.block + section.block { border-top: 1px solid var(--line); }
+.head-row { display: flex; align-items: end; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 22px; }
+.stack { display: grid; gap: 14px; }
+
+/* Stats strip */
+.stats { display: flex; flex-wrap: wrap; gap: 10px 36px; font-family: var(--display); text-transform: uppercase; letter-spacing: .04em; }
+.stats b { font-size: 2rem; font-weight: 800; color: var(--gold); font-variant-numeric: tabular-nums; margin-right: 6px; }
+
+/* Cards */
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 18px 16px; display: grid; grid-template-rows: auto auto 1fr auto; gap: 10px; min-width: 0; }
+.card .meta { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { font-size: .8rem; font-weight: 600; background: var(--chip); color: var(--ink); padding: 3px 9px; border-radius: 999px; white-space: nowrap; }
+.chip.sport { background: var(--pitch); color: var(--pitch-ink); }
+.card p.desc { color: var(--muted); font-size: .98rem; }
+.card .links { display: flex; gap: 14px; flex-wrap: wrap; font-weight: 600; font-size: .95rem; padding-top: 4px; border-top: 1px dashed var(--line); }
+.card .links a { text-decoration-color: var(--gold); text-decoration-thickness: 2px; text-underline-offset: 3px; }
+.card .links .none { color: var(--muted); font-weight: 500; }
+
+/* Directory controls */
+.controls { display: grid; grid-template-columns: 2fr repeat(3, 1fr); gap: 10px; margin-bottom: 14px; }
+.controls label { display: grid; gap: 4px; font-size: .8rem; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); min-width: 0; }
+.controls input, .controls select { font: inherit; font-size: 1rem; color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; width: 100%; min-width: 0; text-transform: none; letter-spacing: 0; }
+.result-line { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; color: var(--muted); margin-bottom: 16px; font-size: .95rem; }
+.linkbtn { background: none; border: 0; color: var(--ink); font: inherit; font-weight: 600; text-decoration: underline; cursor: pointer; padding: 0; }
+.empty { background: var(--surface); border: 1px dashed var(--line); border-radius: var(--radius); padding: 28px; text-align: center; display: grid; gap: 10px; justify-items: center; }
+.notice { background: var(--warn-bg); color: var(--warn-ink); border-radius: 8px; padding: 10px 14px; font-size: .95rem; margin-bottom: 18px; }
+
+/* Stories */
+.story-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; display: grid; grid-template-rows: auto 1fr; min-width: 0; }
+.story-card .pic { aspect-ratio: 16 / 9; max-width: 100%; background: var(--pitch); color: var(--pitch-ink); display: grid; place-items: center; position: relative; overflow: hidden; }
+.story-card .pic::before { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(180deg, transparent 0 30px, rgba(255,255,255,.08) 30px 32px); }
+.story-card .pic span { position: relative; font-family: var(--display); font-weight: 800; font-size: 1.7rem; text-transform: uppercase; letter-spacing: .03em; padding: 0 16px; text-align: center; }
+.story-card .body { padding: 16px 18px 18px; display: grid; gap: 8px; align-content: start; }
+.tag-soon { justify-self: start; background: var(--gold); color: var(--gold-ink); font-weight: 700; font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; padding: 3px 8px; border-radius: 4px; }
+
+/* Get listed + about */
+.two-col { display: grid; grid-template-columns: 1.2fr 1fr; gap: 36px; align-items: start; }
+.two-col > * { min-width: 0; }
+ul.ticks { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+ul.ticks li { padding-left: 28px; position: relative; }
+ul.ticks li::before { content: ""; position: absolute; left: 4px; top: .5em; width: 12px; height: 6px; border-left: 3px solid var(--gold); border-bottom: 3px solid var(--gold); transform: rotate(-45deg); }
+ol.steps { list-style: none; counter-reset: s; padding: 0; margin: 0; display: grid; gap: 14px; }
+ol.steps li { counter-increment: s; display: grid; grid-template-columns: 44px 1fr; gap: 12px; align-items: start; }
+ol.steps li::before { content: counter(s); font-family: var(--display); font-weight: 800; font-size: 1.5rem; width: 44px; height: 44px; border-radius: 50%; background: var(--pitch); color: var(--pitch-ink); display: grid; place-items: center; }
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; display: grid; gap: 14px; }
+.placeholder { background: var(--warn-bg); color: var(--warn-ink); padding: 1px 6px; border-radius: 4px; }
+
+footer.site { background: var(--pitch); color: var(--pitch-ink); margin-top: 24px; }
+footer.site .wrap { padding-block: 32px; display: flex; flex-wrap: wrap; gap: 16px 40px; justify-content: space-between; align-items: center; }
+footer.site nav { display: flex; gap: 18px; flex-wrap: wrap; }
+footer.site a { text-decoration: none; opacity: .85; }
+footer.site a:hover { opacity: 1; text-decoration: underline; }
+footer.site small { opacity: .75; }
+
+@media (max-width: 820px) {
+  .controls { grid-template-columns: 1fr 1fr; }
+  .controls label:first-child { grid-column: 1 / -1; }
+  .two-col { grid-template-columns: 1fr; }
+}
+@media (max-width: 460px) {
+  .controls { grid-template-columns: 1fr; }
+  nav.main a { font-size: 1rem; padding: 6px 7px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .view { animation: rise .35s ease-out both; }
+  @keyframes rise { from { transform: translateY(6px); } to { transform: none; } }
+}
+</style>
+</head>
+<body>
+
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="#home" aria-label="Black Sports Directory UK, home">
+      <svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><circle cx="15" cy="15" r="13" fill="none" stroke="currentColor" stroke-width="2.5"/><path d="M4 11h22M4 19h22" stroke="var(--gold)" stroke-width="2.5"/></svg>
+      Black Sports Directory UK
+    </a>
+    <nav class="main" aria-label="Main">
+      <a href="#directory" data-nav="directory">Directory</a>
+      <a href="#stories" data-nav="stories">Stories</a>
+      <a href="#get-listed" data-nav="get-listed">Get listed</a>
+      <a href="#about" data-nav="about">About</a>
+    </nav>
+  </div>
+</header>
+
+<main id="app">
+
+  <!-- HOME -->
+  <div class="view" data-view="home">
+    <div class="hero">
+      <div class="lanes" aria-hidden="true"></div>
+      <div class="wrap">
+        <p class="eyebrow" style="color:var(--gold)">Free directory · UK-wide</p>
+        <h1>Find your sport.<br><span>Find your people.</span></h1>
+        <p class="lede">Black Sports Directory UK lists Black-led sports clubs, community groups and sport businesses across the UK. Whether you want to swim, run, cycle, climb or find a physio who gets it, start here.</p>
+        <div class="actions">
+          <a class="btn primary" href="#directory">Search the directory</a>
+          <a class="btn ghost" href="#stories">Read our stories</a>
+          <a class="btn ghost" href="#get-listed">Get your organisation listed</a>
+        </div>
+        <div class="stats" id="stats"></div>
+      </div>
+    </div>
+
+    <section class="block">
+      <div class="wrap">
+        <div class="head-row">
+          <div class="stack" style="gap:6px">
+            <p class="eyebrow">In the directory</p>
+            <h2>Clubs and crews to know</h2>
+          </div>
+          <a class="btn ghost" href="#directory">See them all</a>
+        </div>
+        <div class="grid" id="featured"></div>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="wrap two-col">
+        <div class="stack">
+          <p class="eyebrow">Know one we're missing?</p>
+          <h2>Run a club or know one we're missing?</h2>
+          <p class="lede">Tell us and we'll add it. Listing is free, and it takes about five minutes.</p>
+        </div>
+        <div class="actions" style="align-self:center">
+          <a class="btn primary" data-form href="#">Suggest an organisation</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- DIRECTORY -->
+  <div class="view" data-view="directory" hidden>
+    <section class="block">
+      <div class="wrap">
+        <div class="stack" style="margin-bottom:24px">
+          <p class="eyebrow">The directory</p>
+          <h1 style="font-size:clamp(2.2rem,6vw,3.6rem)">The directory</h1>
+          <p class="lede">Every organisation here is Black-led or serves Black communities in sport. Filter by sport, region or type to find one near you. Spotted something out of date? <a data-form href="#">Let us know</a> and we'll fix it.</p>
+        </div>
+        <div class="notice" id="data-notice" hidden></div>
+        <div class="controls" role="search">
+          <label for="q">Search<input id="q" type="search" placeholder="Try swimming, London or hiking" autocomplete="off"></label>
+          <label for="f-sport">Sport or service<select id="f-sport"></select></label>
+          <label for="f-region">Region<select id="f-region"></select></label>
+          <label for="f-cat">Type<select id="f-cat"></select></label>
+        </div>
+        <div class="result-line"><span id="count" aria-live="polite"></span><button class="linkbtn" id="clear" type="button" hidden>Clear filters</button></div>
+        <div class="grid" id="list"></div>
+        <p style="margin-top:28px;color:var(--muted)">Can't find what you're looking for? <a data-form href="#">Suggest an organisation</a>.</p>
+      </div>
+    </section>
+  </div>
+
+  <!-- STORIES -->
+  <div class="view" data-view="stories" hidden>
+    <section class="block">
+      <div class="wrap">
+        <div class="stack" style="margin-bottom:28px">
+          <p class="eyebrow">Stories</p>
+          <h1 style="font-size:clamp(2.2rem,6vw,3.6rem)">Stories</h1>
+          <p class="lede">Conversations with the people building Black-led sport in the UK: the founders, coaches and members behind the clubs in our directory. New stories twice a month.</p>
+        </div>
+        <div class="grid" id="stories"></div>
+        <div class="panel" style="margin-top:28px">
+          <h3>Want to be featured?</h3>
+          <p>If your club, crew or business has a story to tell, we'd love to hear it. <a data-form href="#">Get in touch</a>.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- GET LISTED -->
+  <div class="view" data-view="get-listed" hidden>
+    <section class="block">
+      <div class="wrap two-col">
+        <div class="stack" style="gap:20px">
+          <p class="eyebrow">Get listed</p>
+          <h1 style="font-size:clamp(2.2rem,6vw,3.6rem)">Get your organisation listed</h1>
+          <p class="lede">Listing is free. If you run a Black-led sports club, community group or sport business in the UK, or one that exists to get Black people into sport, we'd love to include you.</p>
+          <h3>Who can be listed</h3>
+          <ul class="ticks">
+            <li>Sports clubs and teams</li>
+            <li>Community groups and running, hiking or swimming crews</li>
+            <li>Charities and governing bodies</li>
+            <li>University and student sport groups</li>
+            <li>Activewear and sports brands</li>
+            <li>Physiotherapists, personal trainers and coaches</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <h3>What happens next</h3>
+          <ol class="steps">
+            <li><p>Fill in the <a data-form href="#">submission form</a>. It takes about five minutes.</p></li>
+            <li><p>We check your details, usually within two weeks.</p></li>
+            <li><p>Your listing goes live, and we'll let you know.</p></li>
+          </ol>
+          <a class="btn primary" data-form href="#" style="justify-self:start">Open the form</a>
+          <p style="color:var(--muted);font-size:.95rem"><b>Already listed?</b> Use the same form to update your details or ask us to remove them.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ABOUT -->
+  <div class="view" data-view="about" hidden>
+    <section class="block">
+      <div class="wrap two-col">
+        <div class="stack" style="gap:20px">
+          <p class="eyebrow">About</p>
+          <h1 style="font-size:clamp(2.2rem,6vw,3.6rem)">About us</h1>
+          <p class="lede">Black people in the UK are less likely to take part in many sports, and it's often hard to find clubs and groups where you feel at home. Black Sports Directory UK brings those organisations together in one place, so it's easier to find them, join them and support them.</p>
+          <h3>What we do</h3>
+          <ul class="ticks">
+            <li>Keep a free, up-to-date directory of Black-led sport organisations</li>
+            <li>Share their stories through interviews and blog posts</li>
+            <li>Help more people find a sport and a community to do it with</li>
+          </ul>
+        </div>
+        <div class="stack">
+          <div class="panel">
+            <h3>Who runs it</h3>
+            <p><span class="placeholder">Daniel to add two or three sentences about himself and why he started the directory, plus a photo.</span></p>
+          </div>
+          <div class="panel">
+            <h3>Get in touch</h3>
+            <p>Email: <b id="contact-email" style="user-select:all"></b> <button class="linkbtn" id="copy-email" type="button">Copy</button></p>
+            <p><span class="placeholder">Social handles to come.</span></p>
+            <p>Want to be listed? Head to <a href="#get-listed">Get listed</a>.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="stack" style="gap:4px">
+      <strong style="font-family:var(--display);font-size:1.3rem;text-transform:uppercase;letter-spacing:.03em">Black Sports Directory UK</strong>
+      <small>Find your sport. Find your people.</small>
+    </div>
+    <nav aria-label="Footer">
+      <a href="#directory">Directory</a>
+      <a href="#stories">Stories</a>
+      <a href="#get-listed">Get listed</a>
+      <a href="#about">About</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+/* ---------- Settings: change these when the site goes live ---------- */
+const CONFIG = {
+  // Google Sheet "Website view" tab, published to the web as CSV
+  // (File > Share > Publish to web > Website view > CSV). If it can't be reached, the sample rows below are shown.
+  sheetCsvUrl: "https://docs.google.com/spreadsheets/d/e/2PACX-1vT-jcs-c7EqLbDTrhyxLyvGiybNdQRyWbVgEM4c233PgZDLK4BKFKqqJg2_wyOnH3OnsDiLaXA7aUO9/pub?gid=1706024579&single=true&output=csv",
+  formUrl: "https://docs.google.com/forms/d/e/1FAIpQLScabpl94svdOfE-dj_amoU8ge7r5fklCy8bISHy8h8Iv42z-A/viewform",
+  contactEmail: "blacksportsdirectoryuk@gmail.com",
+  featuredCount: 6
+};
+
+/* Sample rows copied from the master list on 25 Nov 2026. Shown only when the live sheet can't be reached (as in the Claude preview). */
+const SAMPLE = [
+  ["The Black Swimming Association","Charity or governing body","Swimming","UK-wide","https://thebsa.co.uk/","","Works to increase participation in swimming and water safety in African, Caribbean and Asian communities."],
+  ["Black Cyclists Network","Sports club","Cycling","London","https://www.britishcycling.org.uk/club/profile/8981/black-cyclists-network","","Cycling club and race team creating a pathway for Black and ethnic minority riders."],
+  ["Black Trail Runners","Community group","Trail running","UK-wide","","","Community promoting inclusion of Black people in trail and ultra running."],
+  ["Black Girls Hike UK CIC","Community group","Hiking","UK-wide","","","Community interest company running group hikes for Black women."],
+  ["Black Girls Do Run UK","Community group","Running","UK-wide","https://www.blackgirlsdorun.co.uk/","","Running community for Black women."],
+  ["Black Tennis Collective","Community group","Tennis","","","","Collective promoting Black participation and excellence in British tennis."],
+  ["Swim Dem Crew","Community group","Swimming","London","","","London swimming collective making swimming more accessible to Black people."],
+  ["Black Girl Swim Club","Community group","Swimming","","https://blackgirlswim.club/","","Swim club for Black women and girls."],
+  ["Run Dem Crew","Community group","Running","London","","","London running crew founded by Charlie Dark."],
+  ["Black Sport Collective (University of Nottingham)","Student group","Multi-sport","Nottingham","https://www.nottingham.ac.uk/sport/get-active/black-sport-collective.aspx","","Student community encouraging Black students to take part in sport."],
+  ["Black Student Sport Project (University of Bristol)","Student group","Multi-sport","Bristol","https://www.bristol.ac.uk/sport/black-student-sport/","","University programme supporting Black students' participation in sport."]
+];
+
+/* Interview shortlist (organisations marked "Yes" for interviews). Replace with real stories as they're published. */
+const STORIES = [
+  { org: "The Black Swimming Association", title: "Getting a generation into the water", soon: true },
+  { org: "Black Cyclists Network", title: "Building a pathway from club rides to racing", soon: true },
+  { org: "Black Trail Runners", title: "Why the trails belong to everyone", soon: true },
+  { org: "Black Girls Hike UK", title: "Walking into the outdoors, together", soon: true },
+  { org: "Black Tennis Collective", title: "Opening up British tennis", soon: true }
+];
+
+/* ---------- Data ---------- */
+const COLS = ["name","category","sport","region","website","instagram","about"];
+let rows = [];
+let usingSample = true;
+
+function toObj(r) { const o = {}; COLS.forEach((k, i) => o[k] = (r[i] || "").trim()); if (/^to confirm$/i.test(o.region)) o.region = ""; return o; }
+
+function parseCSV(text) {
+  const out = []; let row = [], cell = "", q = false;
+  for (let i = 0; i < text.length; i++) {
+    const c = text[i];
+    if (q) { if (c === '"') { if (text[i+1] === '"') { cell += '"'; i++; } else q = false; } else cell += c; }
+    else if (c === '"') q = true;
+    else if (c === ",") { row.push(cell); cell = ""; }
+    else if (c === "\n" || c === "\r") { if (c === "\r" && text[i+1] === "\n") i++; row.push(cell); out.push(row); row = []; cell = ""; }
+    else cell += c;
+  }
+  if (cell || row.length) { row.push(cell); out.push(row); }
+  return out;
+}
+
+async function loadData() {
+  if (CONFIG.sheetCsvUrl) {
+    try {
+      const res = await fetch(CONFIG.sheetCsvUrl, { cache: "no-store" });
+      if (!res.ok) throw new Error(res.status);
+      const live = parseCSV(await res.text()).slice(1).filter(r => r[0] && r[1]).map(toObj);
+      rows = live; usingSample = false;
+    } catch (e) { rows = SAMPLE.map(toObj); usingSample = true; }
+  } else { rows = SAMPLE.map(toObj); }
+  rows.sort((a, b) => a.name.localeCompare(b.name));
+}
+
+/* ---------- Rendering ---------- */
+const $ = s => document.querySelector(s);
+const esc = s => s.replace(/[&<>"']/g, c => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[c]));
+const uniq = key => [...new Set(rows.map(r => r[key]).filter(Boolean))].sort();
+
+function handle(ig) { const h = ig.replace(/^https?:\/\/(www\.)?instagram\.com\//i, "").replace(/[@/]/g, ""); return h; }
+
+function card(r) {
+  const links = [];
+  if (r.website) links.push(`<a href="${esc(r.website)}" target="_blank" rel="noopener">Website</a>`);
+  if (r.instagram) links.push(`<a href="https://instagram.com/${esc(handle(r.instagram))}" target="_blank" rel="noopener">Instagram</a>`);
+  return `<article class="card">
+    <div class="meta"><span class="chip sport">${esc(r.sport || "Sport")}</span>${r.region ? `<span class="chip">${esc(r.region)}</span>` : ""}</div>
+    <h3>${esc(r.name)}</h3>
+    <p class="desc">${esc(r.about)}</p>
+    <div class="links">${links.length ? links.join("") : `<span class="none">${esc(r.category)}</span>`}</div>
+  </article>`;
+}
+
+function fillSelect(el, label, values) {
+  el.innerHTML = `<option value="">All</option>` + values.map(v => `<option>${esc(v)}</option>`).join("");
+  el.setAttribute("aria-label", label);
+}
+
+function renderDirectory() {
+  const q = $("#q").value.trim().toLowerCase();
+  const s = $("#f-sport").value, g = $("#f-region").value, c = $("#f-cat").value;
+  if (!rows.length) {
+    $("#list").innerHTML = `<div class="empty" style="grid-column:1/-1"><h3>Listings are on their way</h3><p>We're checking every organisation before it goes live. Run a club or know one? <a data-form href="${esc(CONFIG.formUrl)}" target="_blank" rel="noopener">Tell us about it</a>.</p></div>`;
+    $("#count").textContent = ""; $("#clear").hidden = true; return;
+  }
+  const hits = rows.filter(r =>
+    (!s || r.sport === s) && (!g || r.region === g) && (!c || r.category === c) &&
+    (!q || [r.name, r.sport, r.region, r.category, r.about].join(" ").toLowerCase().includes(q)));
+  $("#list").innerHTML = hits.length ? hits.map(card).join("") :
+    `<div class="empty" style="grid-column:1/-1"><h3>Nothing matches yet</h3><p>Try a wider search, or <a data-form href="${esc(CONFIG.formUrl)}" target="_blank" rel="noopener">tell us about one we're missing</a>.</p></div>`;
+  $("#count").textContent = `${hits.length} of ${rows.length} organisation${rows.length === 1 ? "" : "s"}`;
+  $("#clear").hidden = !(q || s || g || c);
+}
+
+function renderHome() {
+  const featured = rows.slice().sort(() => Math.random() - .5).slice(0, CONFIG.featuredCount);
+  $("#featured").innerHTML = featured.length ? featured.map(card).join("") : `<div class="empty" style="grid-column:1/-1"><h3>First listings coming soon</h3><p>We're checking every organisation with them before it goes live.</p></div>`;
+  $("#stats").hidden = !rows.length;
+  $("#stats").innerHTML = `<span><b>${rows.length}</b>organisations</span><span><b>${uniq("sport").length}</b>sports</span><span><b>${uniq("region").length}</b>places</span>`;
+}
+
+function renderStories() {
+  $("#stories").innerHTML = STORIES.map(st => `<article class="story-card">
+    <div class="pic"><span>${esc(st.org)}</span></div>
+    <div class="body">${st.soon ? `<span class="tag-soon">Coming soon</span>` : ""}<h3>${esc(st.title)}</h3><p style="color:var(--muted)">An interview with ${esc(st.org)}.</p></div>
+  </article>`).join("");
+}
+
+/* ---------- Routing ---------- */
+const VIEWS = ["home","directory","stories","get-listed","about"];
+function route() {
+  const v = VIEWS.includes(location.hash.slice(1)) ? location.hash.slice(1) : "home";
+  document.querySelectorAll("[data-view]").forEach(el => el.hidden = el.dataset.view !== v);
+  document.querySelectorAll("[data-nav]").forEach(a => { if (a.dataset.nav === v) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current"); });
+  window.scrollTo(0, 0);
+}
+
+(async function start() {
+  document.querySelectorAll("a[data-form]").forEach(a => { a.href = CONFIG.formUrl; a.target = "_blank"; a.rel = "noopener"; });
+  await loadData();
+  fillSelect($("#f-sport"), "Sport or service", uniq("sport"));
+  fillSelect($("#f-region"), "Region", uniq("region"));
+  fillSelect($("#f-cat"), "Type", uniq("category"));
+  ["#q","#f-sport","#f-region","#f-cat"].forEach(id => $(id).addEventListener("input", renderDirectory));
+  $("#clear").addEventListener("click", () => { $("#q").value = ""; ["#f-sport","#f-region","#f-cat"].forEach(id => $(id).value = ""); renderDirectory(); });
+  if (usingSample) { const n = $("#data-notice"); n.hidden = false; n.textContent = "Preview: these listings come from the master list and are still being checked with each organisation, so none are live yet."; }
+  $("#contact-email").textContent = CONFIG.contactEmail;
+  $("#copy-email").addEventListener("click", () => { try { navigator.clipboard.writeText(CONFIG.contactEmail).then(() => $("#copy-email").textContent = "Copied", () => {}); } catch (e) {} });
+  renderHome(); renderDirectory(); renderStories();
+  window.addEventListener("hashchange", route); route();
+})();
+</script>
+
+</body>
+</html>
