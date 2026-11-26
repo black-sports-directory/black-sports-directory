@@ -2,6 +2,7 @@
 <html lang="en-GB">
 <head>
 <meta charset="utf-8">
+<meta name="theme-color" content="#ecebe3">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="Find Black-led sports clubs, community groups and sport businesses across the UK. Free to search, free to get listed.">
 <meta property="og:title" content="Black Sports Directory UK">
@@ -11,155 +12,161 @@
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 <title>Black Sports Directory UK</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Caveat:wght@500;700&family=Libre+Franklin:wght@400;500;600;700&family=Special+Elite&display=swap">
 <style>
-/* Layout: a black masthead woven with a kente-inspired band in Pan-African red, gold and green, then a single readable column that widens to a card grid. */
+/* Layout: a photocopied community zine. Newsprint paper, three riso inks (red, yellow, green) printed slightly out of register,
+   cut-out headline labels, taped listing slips, a contents page for stories and a cut-out coupon to get listed. One deliberate paper look, no dark theme. */
 :root {
-  --bg: #f7f5f1;
-  --surface: #ffffff;
-  --ink: #171412;
-  --muted: #5f5850;
-  --line: #e4ded4;
-  --pitch: #121110;
-  --pitch-ink: #f7f3ea;
-  --gold: #f2b705;
-  --gold-ink: #1f1600;
-  --red: #c8102e;
-  --green: #0b7a3e;
-  --green-ink: #ffffff;
-  --chip: #efe9df;
-  --warn-bg: #fff4d6;
-  --warn-ink: #5c4300;
-  --display: "Barlow Condensed", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
-  --body: "Barlow", "Helvetica Neue", Arial, sans-serif;
-  --radius: 10px;
-  --kente: repeating-linear-gradient(90deg, var(--red) 0 22px, #000 22px 26px, var(--gold) 26px 48px, #000 48px 52px, var(--green) 52px 74px, #000 74px 78px);
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #0f0e0d; --surface: #1b1917; --ink: #f2ede5; --muted: #b3aa9c; --line: #2f2b26;
-    --pitch: #070606; --pitch-ink: #f7f3ea; --gold: #f5c02a; --gold-ink: #1f1600;
-    --red: #e0384f; --green: #11874a; --green-ink: #ffffff;
-    --chip: #2a2622; --warn-bg: #3a2f10; --warn-ink: #f5dc9a; color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --bg: #0f0e0d; --surface: #1b1917; --ink: #f2ede5; --muted: #b3aa9c; --line: #2f2b26;
-  --pitch: #070606; --pitch-ink: #f7f3ea; --gold: #f5c02a; --gold-ink: #1f1600;
-  --red: #e0384f; --green: #11874a; --green-ink: #ffffff;
-  --chip: #2a2622; --warn-bg: #3a2f10; --warn-ink: #f5dc9a; color-scheme: dark;
+  --paper: #ecebe3;
+  --sheet: #fbfaf5;
+  --ink: #1b1a18;
+  --pencil: #57534b;
+  --rule: #c9c5b8;
+  --red: #e0242f;
+  --yellow: #ffc21a;
+  --green: #009a55;
+  --tape: rgba(246, 226, 150, .78);
+  --cut: "Archivo Black", "Arial Black", Impact, sans-serif;
+  --hand: "Caveat", "Comic Sans MS", cursive;
+  --type: "Special Elite", "Courier New", Courier, monospace;
+  --body: "Libre Franklin", "Helvetica Neue", Arial, sans-serif;
+  color-scheme: light;
 }
 * { box-sizing: border-box; }
-body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 17px; line-height: 1.55; }
-body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--pitch); }
+html { background: var(--paper); }
+body {
+  background-color: var(--paper);
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .09 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  color: var(--ink); font-family: var(--body); font-size: 17px; line-height: 1.6; min-height: 100vh;
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--paper); }
 a { color: inherit; }
-:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; border-radius: 4px; }
-.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
-h1, h2, h3 { font-family: var(--display); line-height: 1.02; text-wrap: balance; margin: 0; }
-h1 { font-size: clamp(2.6rem, 7vw, 4.6rem); font-weight: 800; text-transform: uppercase; letter-spacing: .005em; }
-h2 { font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 700; text-transform: uppercase; }
-h3 { font-size: 1.45rem; font-weight: 700; }
+:focus-visible { outline: 3px dashed var(--red); outline-offset: 3px; }
+.wrap { max-width: 1100px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
 p { margin: 0; }
-.lede { font-size: 1.15rem; max-width: 62ch; }
-.eyebrow { font-family: var(--display); font-weight: 700; font-size: .95rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+h1, h2, h3 { margin: 0; font-weight: 400; text-wrap: balance; }
+h2 { font-family: var(--cut); font-size: clamp(1.7rem, 4.2vw, 2.5rem); line-height: 1.05; letter-spacing: -.01em; }
+h3 { font-family: var(--cut); font-size: 1.15rem; line-height: 1.2; }
+.lede { font-size: 1.12rem; max-width: 60ch; }
+.hand { font-family: var(--hand); font-weight: 700; font-size: 1.6rem; line-height: 1.1; color: var(--red); }
+.typed { font-family: var(--type); font-size: .92rem; letter-spacing: .02em; }
 
-/* Header */
-header.site { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--pitch); color: var(--pitch-ink); }
-header.site .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px 24px; flex-wrap: wrap; padding-block: 12px; }
-.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-family: var(--display); font-weight: 800; font-size: 1.35rem; text-transform: uppercase; letter-spacing: .02em; }
-.brand svg { flex: none; }
-nav.main { display: flex; gap: 4px; flex-wrap: wrap; }
-nav.main a { text-decoration: none; font-family: var(--display); font-weight: 600; font-size: 1.1rem; letter-spacing: .03em; text-transform: uppercase; padding: 6px 10px; border-radius: 6px; opacity: .85; }
-nav.main a:hover { opacity: 1; background: rgba(255,255,255,.08); }
-nav.main a[aria-current="page"] { opacity: 1; box-shadow: inset 0 -3px 0 var(--gold); border-radius: 0; }
+/* Cut-out labels: words pasted on in strips */
+.cut { display: inline-block; font-family: var(--cut); text-transform: uppercase; padding: .08em .28em .12em; line-height: 1; box-shadow: 2px 3px 0 rgba(0,0,0,.16); }
+.cut.k { background: var(--ink); color: var(--sheet); }
+.cut.y { background: var(--yellow); color: var(--ink); }
+.cut.w { background: var(--sheet); color: var(--ink); }
+.cut.r { background: var(--red); color: #fff; }
+.cut.g { background: var(--green); color: #fff; }
 
-/* Hero */
-.hero { background: var(--pitch); color: var(--pitch-ink); position: relative; overflow: hidden; }
-.hero .wrap { padding-block: 56px 64px; display: grid; gap: 22px; position: relative; }
-.hero .lanes { position: absolute; top: 0; bottom: 0; right: 0; width: 42%; pointer-events: none; opacity: .55;
-  background: repeating-linear-gradient(0deg, transparent 0 34px, rgba(0,0,0,.62) 34px 68px), var(--kente);
-  -webkit-mask-image: linear-gradient(to left, #000 20%, transparent); mask-image: linear-gradient(to left, #000 20%, transparent); }
-.kente-band { height: 10px; background: var(--kente); }
-@media (max-width: 720px) { .hero .lanes { width: 100%; opacity: .18; } }
-.hero h1 span { color: var(--gold); }
-.hero .lede { color: var(--pitch-ink); opacity: .92; }
-.actions { display: flex; flex-wrap: wrap; gap: 10px; }
-.btn { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-family: var(--display); font-weight: 700; font-size: 1.15rem; letter-spacing: .04em; text-transform: uppercase; padding: 11px 18px; border-radius: 8px; border: 2px solid transparent; cursor: pointer; }
-.btn.primary { background: var(--gold); color: var(--gold-ink); }
-.btn.primary:hover { filter: brightness(1.06); }
-.btn.ghost { border-color: currentColor; color: inherit; background: transparent; }
-.btn.ghost:hover { background: rgba(127,127,127,.12); }
+/* Masthead */
+header.site { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--paper); border-bottom: 2px solid var(--ink); }
+header.site .wrap { display: flex; align-items: center; justify-content: space-between; gap: 8px 20px; flex-wrap: wrap; padding-block: 10px; }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.brand .word { font-family: var(--cut); font-size: 1.05rem; line-height: 1; letter-spacing: -.01em; }
+.brand .word small { display: block; font-family: var(--type); font-size: .72rem; letter-spacing: .04em; color: var(--pencil); margin-top: 3px; }
+nav.main { display: flex; gap: 2px 14px; flex-wrap: wrap; font-family: var(--type); font-size: .98rem; }
+nav.main a { text-decoration: none; padding: 2px 4px; }
+nav.main a:hover { text-decoration: underline; text-decoration-thickness: 2px; }
+nav.main a[aria-current="page"] { background: linear-gradient(transparent 45%, var(--yellow) 45%, var(--yellow) 88%, transparent 88%); }
 
-section.block { padding-block: 48px; }
-section.block + section.block { border-top: 1px solid var(--line); }
-.head-row { display: flex; align-items: end; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 22px; }
-.stack { display: grid; gap: 14px; }
+/* Riso tricolour rule, printed slightly out of register */
+.riso-rule { position: relative; height: 14px; margin-block: 6px; }
+.riso-rule i { position: absolute; left: 0; right: 0; height: 4px; mix-blend-mode: multiply; }
+.riso-rule i:nth-child(1) { top: 0; background: var(--red); transform: translateX(-3px); }
+.riso-rule i:nth-child(2) { top: 5px; background: var(--yellow); transform: translateX(4px); }
+.riso-rule i:nth-child(3) { top: 10px; background: var(--green); transform: translateX(-1px); }
 
-/* Stats strip */
-.stats { display: flex; flex-wrap: wrap; gap: 10px 36px; font-family: var(--display); text-transform: uppercase; letter-spacing: .04em; }
-.stats b { font-size: 2rem; font-weight: 800; color: var(--gold); font-variant-numeric: tabular-nums; margin-right: 6px; }
+/* Cover */
+.cover .wrap { padding-block: 34px 44px; display: grid; grid-template-columns: 1.15fr .85fr; gap: 28px 36px; align-items: center; }
+.cover .words { display: grid; gap: 20px; min-width: 0; }
+.cover .issue { display: flex; gap: 10px 18px; flex-wrap: wrap; align-items: baseline; }
+.cover h1 { display: grid; gap: 10px; justify-items: start; font-size: clamp(2.4rem, 7.4vw, 4.8rem); }
+.cover h1 .cut:nth-child(1) { transform: rotate(-2deg); }
+.cover h1 .cut:nth-child(2) { transform: rotate(1.2deg) translateX(.4em); }
+.collage { position: relative; min-width: 0; }
+.collage svg { width: 100%; height: auto; display: block; }
+.cover .wrap.rule-wrap { display: block; padding-block: 0; }
+.collage .note { transform: rotate(-4deg); text-align: right; margin-top: -6px; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px 14px; align-items: center; }
+.btn { display: inline-block; text-decoration: none; font-family: var(--cut); font-size: 1rem; text-transform: uppercase; padding: 12px 16px 11px; border: 2px solid var(--ink); background: var(--sheet); color: var(--ink); box-shadow: 4px 4px 0 var(--ink); transition: transform .12s, box-shadow .12s; cursor: pointer; }
+.btn:hover { transform: translate(-1px, -1px); box-shadow: 5px 5px 0 var(--ink); }
+.btn:active { transform: translate(3px, 3px); box-shadow: 1px 1px 0 var(--ink); }
+.btn.y { background: var(--yellow); }
+.textlink { font-family: var(--type); text-decoration: underline; text-decoration-color: var(--red); text-decoration-thickness: 2px; text-underline-offset: 4px; }
 
-/* Cards */
-.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
-.card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 18px 16px; display: grid; grid-template-rows: auto auto 1fr auto; gap: 10px; min-width: 0; }
-.card .meta { display: flex; flex-wrap: wrap; gap: 6px; }
-.chip { font-size: .8rem; font-weight: 600; background: var(--chip); color: var(--ink); padding: 3px 9px; border-radius: 999px; white-space: nowrap; }
-.chip.sport { background: var(--green); color: var(--green-ink); }
-.card p.desc { color: var(--muted); font-size: .98rem; }
-.card .links { display: flex; gap: 14px; flex-wrap: wrap; font-weight: 600; font-size: .95rem; padding-top: 4px; border-top: 1px dashed var(--line); }
-.card .links a { text-decoration-color: var(--red); text-decoration-thickness: 2px; text-underline-offset: 3px; }
-.card .links .none { color: var(--muted); font-weight: 500; }
+section.block { padding-block: 40px; }
+.head { display: flex; justify-content: space-between; align-items: end; gap: 10px 20px; flex-wrap: wrap; margin-bottom: 26px; }
+.head .stack { display: grid; gap: 6px; }
 
-/* Directory controls */
-.controls { display: grid; grid-template-columns: 2fr repeat(3, 1fr); gap: 10px; margin-bottom: 14px; }
-.controls label { display: grid; gap: 4px; font-size: .8rem; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); min-width: 0; }
-.controls input, .controls select { font: inherit; font-size: 1rem; color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; width: 100%; min-width: 0; text-transform: none; letter-spacing: 0; }
-.result-line { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; color: var(--muted); margin-bottom: 16px; font-size: .95rem; }
-.linkbtn { background: none; border: 0; color: var(--ink); font: inherit; font-weight: 600; text-decoration: underline; cursor: pointer; padding: 0; }
-.empty { background: var(--surface); border: 1px dashed var(--line); border-radius: var(--radius); padding: 28px; text-align: center; display: grid; gap: 10px; justify-items: center; }
-.notice { background: var(--warn-bg); color: var(--warn-ink); border-radius: 8px; padding: 10px 14px; font-size: .95rem; margin-bottom: 18px; }
+/* Listing slips */
+.slips { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 30px 22px; }
+.slip { position: relative; background: var(--sheet); padding: 24px 20px 18px; box-shadow: 0 1px 0 var(--rule), 2px 6px 14px rgba(40,30,10,.10); display: grid; grid-template-rows: auto auto 1fr auto; gap: 8px; min-width: 0; }
+.slip:nth-child(3n+1) { transform: rotate(-.8deg); }
+.slip:nth-child(3n+2) { transform: rotate(.6deg); }
+.slip:nth-child(3n) { transform: rotate(-.3deg); }
+.slip::before { content: ""; position: absolute; top: -11px; left: 50%; width: 92px; height: 22px; margin-left: -46px; background: var(--tape); transform: rotate(-3deg); box-shadow: 0 1px 1px rgba(0,0,0,.06); }
+.slip:nth-child(2n)::before { transform: rotate(4deg); left: 30%; }
+.slip .sport { font-family: var(--type); color: var(--red); font-size: .9rem; display: flex; justify-content: space-between; gap: 8px; }
+.slip .sport .where { color: var(--pencil); }
+.slip p.desc { color: var(--pencil); font-size: .96rem; }
+.slip .links { display: flex; gap: 16px; flex-wrap: wrap; border-top: 1px dashed var(--rule); padding-top: 10px; font-family: var(--type); font-size: .9rem; }
+.slip .links a { text-decoration: underline; text-decoration-color: var(--green); text-decoration-thickness: 2px; text-underline-offset: 3px; }
+.slip .links .none { color: var(--pencil); }
 
-/* Stories */
-.story-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; display: grid; grid-template-rows: auto 1fr; min-width: 0; }
-.story-card .pic { aspect-ratio: 16 / 9; max-width: 100%; background: var(--pitch); color: var(--pitch-ink); display: grid; place-items: center; position: relative; overflow: hidden; }
-.story-card .pic::before { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 10px; background: var(--kente); }
-.story-card .pic span { position: relative; font-family: var(--display); font-weight: 800; font-size: 1.7rem; text-transform: uppercase; letter-spacing: .03em; padding: 0 16px; text-align: center; }
-.story-card .body { padding: 16px 18px 18px; display: grid; gap: 8px; align-content: start; }
-.tag-soon { justify-self: start; background: var(--gold); color: var(--gold-ink); font-weight: 700; font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; padding: 3px 8px; border-radius: 4px; }
+/* Directory search */
+.search { background: var(--sheet); border: 2px solid var(--ink); padding: 16px; display: grid; grid-template-columns: 2fr repeat(3, 1fr); gap: 12px; margin-bottom: 16px; box-shadow: 4px 4px 0 var(--ink); }
+.search label { display: grid; gap: 2px; min-width: 0; font-family: var(--hand); font-size: 1.3rem; font-weight: 700; line-height: 1.1; }
+.search input, .search select { font: inherit; font-family: var(--body); font-size: 1rem; font-weight: 400; color: var(--ink); background: var(--paper); border: 0; border-bottom: 2px solid var(--ink); border-radius: 0; padding: 8px 6px; width: 100%; min-width: 0; }
+.result-line { display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; margin-bottom: 28px; }
+.linkbtn { background: none; border: 0; padding: 0; color: var(--ink); font-family: var(--type); font-size: .92rem; text-decoration: underline; cursor: pointer; }
+.empty { grid-column: 1 / -1; background: var(--sheet); border: 2px dashed var(--pencil); padding: 26px; display: grid; gap: 8px; justify-items: start; }
+.sticky { background: var(--yellow); padding: 14px 16px; transform: rotate(-.6deg); box-shadow: 2px 5px 10px rgba(40,30,10,.14); font-family: var(--hand); font-size: 1.35rem; line-height: 1.2; max-width: 560px; }
 
-/* Get listed + about */
-.two-col { display: grid; grid-template-columns: 1.2fr 1fr; gap: 36px; align-items: start; }
-.two-col > * { min-width: 0; }
-ul.ticks { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
-ul.ticks li { padding-left: 28px; position: relative; }
-ul.ticks li::before { content: ""; position: absolute; left: 4px; top: .5em; width: 12px; height: 6px; border-left: 3px solid var(--green); border-bottom: 3px solid var(--green); transform: rotate(-45deg); }
-ol.steps { list-style: none; counter-reset: s; padding: 0; margin: 0; display: grid; gap: 14px; }
-ol.steps li { counter-increment: s; display: grid; grid-template-columns: 44px 1fr; gap: 12px; align-items: start; }
-ol.steps li::before { content: counter(s); font-family: var(--display); font-weight: 800; font-size: 1.5rem; width: 44px; height: 44px; border-radius: 50%; background: var(--red); color: #fff; display: grid; place-items: center; }
-.panel { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; display: grid; gap: 14px; }
-.placeholder { background: var(--warn-bg); color: var(--warn-ink); padding: 1px 6px; border-radius: 4px; }
+/* Contents page */
+.contents { list-style: none; margin: 0; padding: 0; border-top: 2px solid var(--ink); }
+.contents li { display: grid; grid-template-columns: 64px 1fr auto; gap: 6px 18px; align-items: baseline; padding: 18px 0; border-bottom: 1px solid var(--rule); }
+.contents .pg { font-family: var(--cut); font-size: 2rem; line-height: 1; color: var(--green); }
+.contents .t { display: grid; gap: 2px; min-width: 0; }
+.contents .t h3 { font-size: 1.3rem; }
+.stamp { font-family: var(--type); font-size: .8rem; text-transform: uppercase; letter-spacing: .08em; color: var(--red); border: 2px solid var(--red); padding: 3px 8px; transform: rotate(-4deg); white-space: nowrap; opacity: .9; }
 
-footer.site { background: var(--pitch); color: var(--pitch-ink); }
-.kente-band + footer.site, main + .kente-band { margin-top: 0; }
-main { padding-bottom: 24px; }
-footer.site .wrap { padding-block: 32px; display: flex; flex-wrap: wrap; gap: 16px 40px; justify-content: space-between; align-items: center; }
-footer.site nav { display: flex; gap: 18px; flex-wrap: wrap; }
-footer.site a { text-decoration: none; opacity: .85; }
-footer.site a:hover { opacity: 1; text-decoration: underline; }
-footer.site small { opacity: .75; }
+/* Coupon */
+.two { display: grid; grid-template-columns: 1.1fr .9fr; gap: 36px; align-items: start; }
+.two > * { min-width: 0; }
+.coupon { position: relative; border: 3px dashed var(--ink); background: var(--sheet); padding: 26px 22px 22px; display: grid; gap: 16px; }
+.coupon .scissors { position: absolute; top: -17px; left: 24px; background: var(--paper); padding: 0 6px; }
+ul.ticks { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+ul.ticks li { padding-left: 30px; position: relative; }
+ul.ticks li::before { content: "✓"; position: absolute; left: 4px; top: -4px; font-family: var(--hand); font-weight: 700; font-size: 1.6rem; color: var(--green); }
+ol.steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; counter-reset: s; }
+ol.steps li { counter-increment: s; display: grid; grid-template-columns: 38px 1fr; gap: 10px; align-items: start; }
+ol.steps li::before { content: counter(s); font-family: var(--hand); font-weight: 700; font-size: 1.7rem; line-height: 34px; width: 34px; height: 34px; text-align: center; border: 2px solid var(--red); border-radius: 50% 45% 52% 48%; color: var(--red); }
+
+/* Letter */
+.letter { background: var(--sheet); padding: 28px 26px; box-shadow: 2px 6px 14px rgba(40,30,10,.10); display: grid; gap: 14px; transform: rotate(.4deg); }
+.letter .sign { font-family: var(--hand); font-size: 2rem; font-weight: 700; }
+
+footer.site { border-top: 2px solid var(--ink); margin-top: 30px; }
+footer.site .wrap { padding-block: 26px 34px; display: flex; flex-wrap: wrap; gap: 14px 30px; justify-content: space-between; align-items: center; }
+footer.site nav { display: flex; gap: 6px 16px; flex-wrap: wrap; font-family: var(--type); }
 
 @media (max-width: 820px) {
-  .controls { grid-template-columns: 1fr 1fr; }
-  .controls label:first-child { grid-column: 1 / -1; }
-  .two-col { grid-template-columns: 1fr; }
+  .cover .wrap { grid-template-columns: 1fr; }
+  .collage { max-width: 420px; justify-self: center; width: 100%; }
+  .collage { max-width: 340px; }
+  .search { grid-template-columns: 1fr 1fr; }
+  .search label:first-child { grid-column: 1 / -1; }
+  .two { grid-template-columns: 1fr; }
 }
 @media (max-width: 460px) {
-  .controls { grid-template-columns: 1fr; }
-  nav.main a { font-size: 1rem; padding: 6px 7px; }
+  .search { grid-template-columns: 1fr; }
+  .contents li { grid-template-columns: 46px 1fr; }
+  .contents .stamp { grid-column: 2; justify-self: start; }
 }
 @media (prefers-reduced-motion: no-preference) {
-  .view { animation: rise .35s ease-out both; }
-  @keyframes rise { from { transform: translateY(6px); } to { transform: none; } }
+  .view { animation: drop .35s ease-out both; }
+  @keyframes drop { from { transform: translateY(5px); } to { transform: none; } }
 }
 </style>
 </head>
@@ -169,8 +176,12 @@ footer.site small { opacity: .75; }
 <header class="site">
   <div class="wrap">
     <a class="brand" href="#home" aria-label="Black Sports Directory UK, home">
-      <svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><defs><clipPath id="bm"><circle cx="16" cy="16" r="12.5"/></clipPath></defs><g clip-path="url(#bm)"><rect x="0" y="0" width="32" height="10.5" fill="var(--red)"/><rect x="0" y="10.5" width="32" height="11" fill="var(--gold)"/><rect x="0" y="21.5" width="32" height="11" fill="var(--green)"/></g><circle cx="16" cy="16" r="13.5" fill="none" stroke="currentColor" stroke-width="2"/></svg>
-      Black Sports Directory UK
+      <svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true">
+        <circle cx="15" cy="16" r="11" fill="#e0242f"/>
+        <circle cx="25" cy="16" r="11" fill="#ffc21a" style="mix-blend-mode:multiply"/>
+        <circle cx="20" cy="25" r="11" fill="#009a55" style="mix-blend-mode:multiply"/>
+      </svg>
+      <span class="word">Black Sports Directory UK<small>Issue 01 · Winter 2026 · Free</small></span>
     </a>
     <nav class="main" aria-label="Main">
       <a href="#directory" data-nav="directory">Directory</a>
@@ -180,49 +191,88 @@ footer.site small { opacity: .75; }
     </nav>
   </div>
 </header>
-<div class="kente-band" aria-hidden="true"></div>
 
 <main id="app">
 
   <!-- HOME -->
   <div class="view" data-view="home">
-    <div class="hero">
-      <div class="lanes" aria-hidden="true"></div>
+    <section class="cover">
       <div class="wrap">
-        <p class="eyebrow" style="color:var(--gold)">Free directory · UK-wide</p>
-        <h1>Find your sport.<br><span>Find your people.</span></h1>
-        <p class="lede">Black Sports Directory UK lists Black-led sports clubs, community groups and sport businesses across the UK. Whether you want to swim, run, cycle, climb or find a physio who gets it, start here.</p>
-        <div class="actions">
-          <a class="btn primary" href="#directory">Search the directory</a>
-          <a class="btn ghost" href="#stories">Read our stories</a>
-          <a class="btn ghost" href="#get-listed">Get your organisation listed</a>
+        <div class="words">
+          <div class="issue"><span class="typed">A free directory of Black-led sport across the UK</span></div>
+          <h1><span class="cut k">Find your sport.</span><span class="cut y">Find your people.</span></h1>
+          <p class="lede">Black-led sports clubs, community groups and sport businesses, all in one place. Whether you want to swim, run, cycle, climb or find a physio who gets it, start here.</p>
+          <div class="actions">
+            <a class="btn y" href="#directory">Search the directory</a>
+            <a class="btn" href="#get-listed">Get listed</a>
+            <a class="textlink" href="#stories">Read our stories</a>
+          </div>
+          <p class="typed" id="stats" style="color:var(--pencil)"></p>
         </div>
-        <div class="stats" id="stats"></div>
+        <div class="collage" aria-hidden="true">
+          <svg viewBox="0 0 420 380">
+            <defs>
+              <pattern id="dots" width="7" height="7" patternUnits="userSpaceOnUse"><circle cx="3.5" cy="3.5" r="1.9" fill="#1b1a18"/></pattern>
+              <pattern id="dotsS" width="6" height="6" patternUnits="userSpaceOnUse"><circle cx="3" cy="3" r="1.1" fill="#1b1a18"/></pattern>
+            </defs>
+            <!-- yellow sun / ball -->
+            <circle cx="250" cy="150" r="112" fill="#ffc21a" style="mix-blend-mode:multiply"/>
+            <circle cx="256" cy="146" r="112" fill="url(#dotsS)" opacity=".18"/>
+            <!-- green running track lanes -->
+            <g fill="none" stroke="#009a55" stroke-width="13" style="mix-blend-mode:multiply" opacity=".92">
+              <path d="M20 330 C 90 210, 260 200, 410 250"/>
+              <path d="M20 360 C 100 245, 270 235, 410 285"/>
+            </g>
+            <g fill="none" stroke="#fbfaf5" stroke-width="2" stroke-dasharray="9 9" opacity=".9">
+              <path d="M20 345 C 95 228, 265 218, 410 268"/>
+            </g>
+            <!-- red swim waves -->
+            <g fill="none" stroke="#e0242f" stroke-width="10" stroke-linecap="round" style="mix-blend-mode:multiply">
+              <path d="M70 92 q 20 -22 40 0 t 40 0 t 40 0"/>
+              <path d="M58 122 q 20 -22 40 0 t 40 0 t 40 0"/>
+            </g>
+            <!-- halftone cut-out football -->
+            <g transform="translate(300 255) rotate(-12)">
+              <circle r="52" fill="#fbfaf5" stroke="#1b1a18" stroke-width="3"/>
+              <circle r="52" fill="url(#dots)" opacity=".35"/>
+              <polygon points="0,-17 16,-5 10,14 -10,14 -16,-5" fill="#1b1a18"/>
+              <path d="M0 -17 L0 -50 M16 -5 L46 -16 M10 14 L28 42 M-10 14 L-28 42 M-16 -5 L-46 -16" stroke="#1b1a18" stroke-width="3"/>
+            </g>
+            <!-- tape -->
+            <rect x="268" y="188" width="74" height="20" fill="rgba(246,226,150,.8)" transform="rotate(28 305 198)"/>
+            <!-- star sticker -->
+            <g transform="translate(92 238) rotate(10)">
+              <polygon points="0,-30 9,-9 31,-9 13,4 20,26 0,13 -20,26 -13,4 -31,-9 -9,-9" fill="#e0242f"/>
+              <text x="0" y="5" text-anchor="middle" font-family="Archivo Black, Arial Black, sans-serif" font-size="10" fill="#fff">FREE</text>
+            </g>
+          </svg>
+          <p class="hand note">by us, for us. pass it on ↓</p>
+        </div>
       </div>
-    </div>
+      <div class="wrap rule-wrap"><div class="riso-rule" aria-hidden="true"><i></i><i></i><i></i></div></div>
+    </section>
 
     <section class="block">
       <div class="wrap">
-        <div class="head-row">
-          <div class="stack" style="gap:6px">
-            <p class="eyebrow">In the directory</p>
+        <div class="head">
+          <div class="stack">
+            <p class="hand">in this issue…</p>
             <h2>Clubs and crews to know</h2>
           </div>
-          <a class="btn ghost" href="#directory">See them all</a>
+          <a class="textlink" href="#directory">See the whole directory →</a>
         </div>
-        <div class="grid" id="featured"></div>
+        <div class="slips" id="featured"></div>
       </div>
     </section>
 
     <section class="block">
-      <div class="wrap two-col">
-        <div class="stack">
-          <p class="eyebrow">Know one we're missing?</p>
-          <h2>Run a club or know one we're missing?</h2>
-          <p class="lede">Tell us and we'll add it. Listing is free, and it takes about five minutes.</p>
+      <div class="wrap two">
+        <div style="display:grid;gap:14px">
+          <h2><span class="cut g">Know one</span> we're missing?</h2>
+          <p class="lede">Run a club or know a crew that should be in here? Tell us and we'll add it. Listing is free and takes about five minutes.</p>
         </div>
         <div class="actions" style="align-self:center">
-          <a class="btn primary" data-form href="#">Suggest an organisation</a>
+          <a class="btn y" data-form href="#">Suggest an organisation</a>
         </div>
       </div>
     </section>
@@ -232,21 +282,20 @@ footer.site small { opacity: .75; }
   <div class="view" data-view="directory" hidden>
     <section class="block">
       <div class="wrap">
-        <div class="stack" style="margin-bottom:24px">
-          <p class="eyebrow">The directory</p>
-          <h1 style="font-size:clamp(2.2rem,6vw,3.6rem)">The directory</h1>
-          <p class="lede">Every organisation here is Black-led or serves Black communities in sport. Filter by sport, region or type to find one near you. Spotted something out of date? <a data-form href="#">Let us know</a> and we'll fix it.</p>
+        <div style="display:grid;gap:14px;margin-bottom:26px">
+          <h2 style="font-size:clamp(2.2rem,6vw,3.4rem)"><span class="cut k">The directory</span></h2>
+          <p class="lede">Every organisation here is Black-led or exists to get Black people into sport. Filter by sport, place or type to find one near you. Spotted something out of date? <a class="textlink" data-form href="#">Let us know</a>.</p>
         </div>
-        <div class="notice" id="data-notice" hidden></div>
-        <div class="controls" role="search">
-          <label for="q">Search<input id="q" type="search" placeholder="Try swimming, London or hiking" autocomplete="off"></label>
-          <label for="f-sport">Sport or service<select id="f-sport"></select></label>
-          <label for="f-region">Region<select id="f-region"></select></label>
-          <label for="f-cat">Type<select id="f-cat"></select></label>
+        <p class="sticky" id="data-notice" hidden style="margin-bottom:22px"></p>
+        <div class="search" role="search">
+          <label for="q">looking for…<input id="q" type="search" placeholder="swimming, London, hiking…" autocomplete="off"></label>
+          <label for="f-sport">sport<select id="f-sport"></select></label>
+          <label for="f-region">where<select id="f-region"></select></label>
+          <label for="f-cat">type<select id="f-cat"></select></label>
         </div>
-        <div class="result-line"><span id="count" aria-live="polite"></span><button class="linkbtn" id="clear" type="button" hidden>Clear filters</button></div>
-        <div class="grid" id="list"></div>
-        <p style="margin-top:28px;color:var(--muted)">Can't find what you're looking for? <a data-form href="#">Suggest an organisation</a>.</p>
+        <div class="result-line"><span class="typed" id="count" aria-live="polite"></span><button class="linkbtn" id="clear" type="button" hidden>clear filters</button></div>
+        <div class="slips" id="list"></div>
+        <p style="margin-top:34px">Can't find what you're looking for? <a class="textlink" data-form href="#">Suggest an organisation</a>.</p>
       </div>
     </section>
   </div>
@@ -255,16 +304,13 @@ footer.site small { opacity: .75; }
   <div class="view" data-view="stories" hidden>
     <section class="block">
       <div class="wrap">
-        <div class="stack" style="margin-bottom:28px">
-          <p class="eyebrow">Stories</p>
-          <h1 style="font-size:clamp(2.2rem,6vw,3.6rem)">Stories</h1>
-          <p class="lede">Conversations with the people building Black-led sport in the UK: the founders, coaches and members behind the clubs in our directory. New stories twice a month.</p>
+        <div style="display:grid;gap:14px;margin-bottom:28px">
+          <h2 style="font-size:clamp(2.2rem,6vw,3.4rem)"><span class="cut r">Stories</span></h2>
+          <p class="lede">Conversations with the people building Black-led sport in the UK: the founders, coaches and members behind the clubs in this directory. New stories twice a month.</p>
+          <p class="hand" style="color:var(--green)">coming up in the next issue</p>
         </div>
-        <div class="grid" id="story-grid"></div>
-        <div class="panel" style="margin-top:28px">
-          <h3>Want to be featured?</h3>
-          <p>If your club, crew or business has a story to tell, we'd love to hear it. <a data-form href="#">Get in touch</a>.</p>
-        </div>
+        <ol class="contents" id="story-grid"></ol>
+        <p class="sticky" style="margin-top:30px">Got a story to tell? We'd love to hear it. <a data-form href="#">Get in touch</a>.</p>
       </div>
     </section>
   </div>
@@ -272,12 +318,11 @@ footer.site small { opacity: .75; }
   <!-- GET LISTED -->
   <div class="view" data-view="get-listed" hidden>
     <section class="block">
-      <div class="wrap two-col">
-        <div class="stack" style="gap:20px">
-          <p class="eyebrow">Get listed</p>
-          <h1 style="font-size:clamp(2.2rem,6vw,3.6rem)">Get your organisation listed</h1>
+      <div class="wrap two">
+        <div style="display:grid;gap:18px">
+          <h2 style="font-size:clamp(2.2rem,6vw,3.4rem)"><span class="cut y">Get listed</span></h2>
           <p class="lede">Listing is free. If you run a Black-led sports club, community group or sport business in the UK, or one that exists to get Black people into sport, we'd love to include you.</p>
-          <h3>Who can be listed</h3>
+          <p class="hand" style="color:var(--ink)">who can be listed</p>
           <ul class="ticks">
             <li>Sports clubs and teams</li>
             <li>Community groups and running, hiking or swimming crews</li>
@@ -287,15 +332,16 @@ footer.site small { opacity: .75; }
             <li>Physiotherapists, personal trainers and coaches</li>
           </ul>
         </div>
-        <div class="panel">
-          <h3>What happens next</h3>
+        <div class="coupon">
+          <svg class="scissors" width="34" height="26" viewBox="0 0 34 26" aria-hidden="true"><circle cx="7" cy="7" r="5" fill="none" stroke="#1b1a18" stroke-width="2.5"/><circle cx="7" cy="19" r="5" fill="none" stroke="#1b1a18" stroke-width="2.5"/><path d="M11 9 L32 20 M11 17 L32 6" stroke="#1b1a18" stroke-width="2.5"/></svg>
+          <h3 style="font-size:1.5rem">How it works</h3>
           <ol class="steps">
-            <li><p>Fill in the <a data-form href="#">submission form</a>. It takes about five minutes.</p></li>
+            <li><p>Fill in the <a class="textlink" data-form href="#">form</a>. It takes about five minutes.</p></li>
             <li><p>We check your details, usually within two weeks.</p></li>
             <li><p>Your listing goes live, and we'll let you know.</p></li>
           </ol>
-          <a class="btn primary" data-form href="#" style="justify-self:start">Open the form</a>
-          <p style="color:var(--muted);font-size:.95rem"><b>Already listed?</b> Use the same form to update your details or ask us to remove them.</p>
+          <a class="btn y" data-form href="#" style="justify-self:start">Open the form</a>
+          <p class="typed" style="color:var(--pencil)">Already listed? Use the same form to update your details or ask us to remove them.</p>
         </div>
       </div>
     </section>
@@ -304,28 +350,28 @@ footer.site small { opacity: .75; }
   <!-- ABOUT -->
   <div class="view" data-view="about" hidden>
     <section class="block">
-      <div class="wrap two-col">
-        <div class="stack" style="gap:20px">
-          <p class="eyebrow">About</p>
-          <h1 style="font-size:clamp(2.2rem,6vw,3.6rem)">About us</h1>
+      <div class="wrap two">
+        <div style="display:grid;gap:18px">
+          <h2 style="font-size:clamp(2.2rem,6vw,3.4rem)"><span class="cut g">About us</span></h2>
           <p class="lede">Black people in the UK are less likely to take part in many sports, and it's often hard to find clubs and groups where you feel at home. Black Sports Directory UK brings those organisations together in one place, so it's easier to find them, join them and support them.</p>
-          <h3>What we do</h3>
+          <p class="hand" style="color:var(--ink)">what we do</p>
           <ul class="ticks">
             <li>Keep a free, up-to-date directory of Black-led sport organisations</li>
-            <li>Share their stories through interviews and blog posts</li>
+            <li>Share their stories through interviews and articles</li>
             <li>Help more people find a sport and a community to do it with</li>
           </ul>
         </div>
-        <div class="stack">
-          <div class="panel">
-            <h3>Who runs it</h3>
-            <p><span class="placeholder">Daniel to add two or three sentences about himself and why he started the directory, plus a photo.</span></p>
+        <div style="display:grid;gap:26px">
+          <div class="letter">
+            <p class="typed" style="color:var(--pencil)">A letter from the editor</p>
+            <p class="sticky" style="transform:rotate(1deg)">Daniel: add two or three lines here about you and why you started the directory, plus a photo.</p>
+            <p class="sign">— Daniel</p>
           </div>
-          <div class="panel">
-            <h3>Get in touch</h3>
-            <p>Email: <b id="contact-email" style="user-select:all"></b> <button class="linkbtn" id="copy-email" type="button">Copy</button></p>
-            <p><span class="placeholder">Social handles to come.</span></p>
-            <p>Want to be listed? Head to <a href="#get-listed">Get listed</a>.</p>
+          <div class="coupon">
+            <h3 style="font-size:1.4rem">Get in touch</h3>
+            <p>Email <b id="contact-email" style="user-select:all"></b> <button class="linkbtn" id="copy-email" type="button">copy</button></p>
+            <p class="typed" style="color:var(--pencil)">Social handles to come.</p>
+            <p>Want to be listed? Head to <a class="textlink" href="#get-listed">Get listed</a>.</p>
           </div>
         </div>
       </div>
@@ -333,12 +379,11 @@ footer.site small { opacity: .75; }
   </div>
 </main>
 
-<div class="kente-band" aria-hidden="true"></div>
 <footer class="site">
   <div class="wrap">
-    <div class="stack" style="gap:4px">
-      <strong style="font-family:var(--display);font-size:1.3rem;text-transform:uppercase;letter-spacing:.03em">Black Sports Directory UK</strong>
-      <small>Find your sport. Find your people.</small>
+    <div style="display:grid;gap:2px">
+      <strong style="font-family:var(--cut)">Black Sports Directory UK</strong>
+      <span class="typed" style="color:var(--pencil)">Issue 01. Made by and for the community. Pass it on.</span>
     </div>
     <nav aria-label="Footer">
       <a href="#directory">Directory</a>
@@ -426,13 +471,13 @@ function handle(ig) { const h = ig.replace(/^https?:\/\/(www\.)?instagram\.com\/
 
 function card(r) {
   const links = [];
-  if (r.website) links.push(`<a href="${esc(r.website)}" target="_blank" rel="noopener">Website</a>`);
-  if (r.instagram) links.push(`<a href="https://instagram.com/${esc(handle(r.instagram))}" target="_blank" rel="noopener">Instagram</a>`);
-  return `<article class="card">
-    <div class="meta"><span class="chip sport">${esc(r.sport || "Sport")}</span>${r.region ? `<span class="chip">${esc(r.region)}</span>` : ""}</div>
+  if (r.website) links.push(`<a href="${esc(r.website)}" target="_blank" rel="noopener">website</a>`);
+  if (r.instagram) links.push(`<a href="https://instagram.com/${esc(handle(r.instagram))}" target="_blank" rel="noopener">instagram</a>`);
+  return `<article class="slip">
+    <div class="sport"><span>${esc((r.sport || "Sport").toLowerCase())}</span>${r.region ? `<span class="where">${esc(r.region)}</span>` : ""}</div>
     <h3>${esc(r.name)}</h3>
     <p class="desc">${esc(r.about)}</p>
-    <div class="links">${links.length ? links.join("") : `<span class="none">${esc(r.category)}</span>`}</div>
+    <div class="links">${links.length ? links.join("") : `<span class="none">${esc(r.category.toLowerCase())}</span>`}</div>
   </article>`;
 }
 
@@ -445,30 +490,31 @@ function renderDirectory() {
   const q = $("#q").value.trim().toLowerCase();
   const s = $("#f-sport").value, g = $("#f-region").value, c = $("#f-cat").value;
   if (!rows.length) {
-    $("#list").innerHTML = `<div class="empty" style="grid-column:1/-1"><h3>Listings are on their way</h3><p>We're checking every organisation before it goes live. Run a club or know one? <a data-form href="${esc(CONFIG.formUrl)}" target="_blank" rel="noopener">Tell us about it</a>.</p></div>`;
+    $("#list").innerHTML = `<div class="empty"><p class="hand">listings are on their way…</p><p>We're checking every organisation before it goes live. Run a club or know one? <a class="textlink" href="${esc(CONFIG.formUrl)}" target="_blank" rel="noopener">Tell us about it</a>.</p></div>`;
     $("#count").textContent = ""; $("#clear").hidden = true; return;
   }
   const hits = rows.filter(r =>
     (!s || r.sport === s) && (!g || r.region === g) && (!c || r.category === c) &&
     (!q || [r.name, r.sport, r.region, r.category, r.about].join(" ").toLowerCase().includes(q)));
   $("#list").innerHTML = hits.length ? hits.map(card).join("") :
-    `<div class="empty" style="grid-column:1/-1"><h3>Nothing matches yet</h3><p>Try a wider search, or <a data-form href="${esc(CONFIG.formUrl)}" target="_blank" rel="noopener">tell us about one we're missing</a>.</p></div>`;
+    `<div class="empty"><p class="hand">nothing matches yet</p><p>Try a wider search, or <a class="textlink" href="${esc(CONFIG.formUrl)}" target="_blank" rel="noopener">tell us about one we're missing</a>.</p></div>`;
   $("#count").textContent = `${hits.length} of ${rows.length} organisation${rows.length === 1 ? "" : "s"}`;
   $("#clear").hidden = !(q || s || g || c);
 }
 
 function renderHome() {
   const featured = rows.slice().sort(() => Math.random() - .5).slice(0, CONFIG.featuredCount);
-  $("#featured").innerHTML = featured.length ? featured.map(card).join("") : `<div class="empty" style="grid-column:1/-1"><h3>First listings coming soon</h3><p>We're checking every organisation with them before it goes live.</p></div>`;
+  $("#featured").innerHTML = featured.length ? featured.map(card).join("") : `<div class="empty"><p class="hand">first listings coming soon…</p><p>We're checking every organisation with them before it goes live.</p></div>`;
   $("#stats").hidden = !rows.length;
-  $("#stats").innerHTML = `<span><b>${rows.length}</b>organisations</span><span><b>${uniq("sport").length}</b>sports</span><span><b>${uniq("region").length}</b>places</span>`;
+  $("#stats").textContent = `${rows.length} organisations · ${uniq("sport").length} sports · ${uniq("region").length} places`;
 }
 
 function renderStories() {
-  $("#story-grid").innerHTML = STORIES.map(st => `<article class="story-card">
-    <div class="pic"><span>${esc(st.org)}</span></div>
-    <div class="body">${st.soon ? `<span class="tag-soon">Coming soon</span>` : ""}<h3>${esc(st.title)}</h3><p style="color:var(--muted)">An interview with ${esc(st.org)}.</p></div>
-  </article>`).join("");
+  $("#story-grid").innerHTML = STORIES.map((st, i) => `<li>
+    <span class="pg">${String(4 + i * 4).padStart(2, "0")}</span>
+    <div class="t"><span class="typed" style="color:var(--pencil)">${esc(st.org)}</span><h3>${esc(st.title)}</h3></div>
+    ${st.soon ? `<span class="stamp">coming soon</span>` : ""}
+  </li>`).join("");
 }
 
 /* ---------- Routing ---------- */
@@ -488,7 +534,7 @@ function route() {
   fillSelect($("#f-cat"), "Type", uniq("category"));
   ["#q","#f-sport","#f-region","#f-cat"].forEach(id => $(id).addEventListener("input", renderDirectory));
   $("#clear").addEventListener("click", () => { $("#q").value = ""; ["#f-sport","#f-region","#f-cat"].forEach(id => $(id).value = ""); renderDirectory(); });
-  if (usingSample) { const n = $("#data-notice"); n.hidden = false; n.textContent = "Preview: these listings come from the master list and are still being checked with each organisation, so none are live yet."; }
+  if (usingSample) { const n = $("#data-notice"); n.hidden = false; n.textContent = "Preview: these come from the master list and are still being checked with each organisation, so none are live yet."; }
   $("#contact-email").textContent = CONFIG.contactEmail;
   $("#copy-email").addEventListener("click", () => { try { navigator.clipboard.writeText(CONFIG.contactEmail).then(() => $("#copy-email").textContent = "Copied", () => {}); } catch (e) {} });
   renderHome(); renderDirectory(); renderStories();
