@@ -13,35 +13,41 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&display=swap">
 <style>
-/* Layout: a pitch-green masthead with a lane-line motif, then a single readable column that widens to a card grid for listings. */
+/* Layout: a black masthead woven with a kente-inspired band in Pan-African red, gold and green, then a single readable column that widens to a card grid. */
 :root {
-  --bg: #f5f6f1;
+  --bg: #f7f5f1;
   --surface: #ffffff;
-  --ink: #15211c;
-  --muted: #56635d;
-  --line: #dde2da;
-  --pitch: #0f4a37;
-  --pitch-ink: #f3f6ef;
-  --gold: #e9a908;
-  --gold-ink: #241a00;
-  --chip: #e8eee6;
+  --ink: #171412;
+  --muted: #5f5850;
+  --line: #e4ded4;
+  --pitch: #121110;
+  --pitch-ink: #f7f3ea;
+  --gold: #f2b705;
+  --gold-ink: #1f1600;
+  --red: #c8102e;
+  --green: #0b7a3e;
+  --green-ink: #ffffff;
+  --chip: #efe9df;
   --warn-bg: #fff4d6;
   --warn-ink: #5c4300;
   --display: "Barlow Condensed", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
   --body: "Barlow", "Helvetica Neue", Arial, sans-serif;
   --radius: 10px;
+  --kente: repeating-linear-gradient(90deg, var(--red) 0 22px, #000 22px 26px, var(--gold) 26px 48px, #000 48px 52px, var(--green) 52px 74px, #000 74px 78px);
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #0f1613; --surface: #17211c; --ink: #e9efe9; --muted: #a2b0a8; --line: #2a3832;
-    --pitch: #0b3a2b; --pitch-ink: #eef4ee; --gold: #f2b928; --gold-ink: #1d1500;
-    --chip: #22302a; --warn-bg: #3a2f10; --warn-ink: #f5dc9a; color-scheme: dark;
+    --bg: #0f0e0d; --surface: #1b1917; --ink: #f2ede5; --muted: #b3aa9c; --line: #2f2b26;
+    --pitch: #070606; --pitch-ink: #f7f3ea; --gold: #f5c02a; --gold-ink: #1f1600;
+    --red: #e0384f; --green: #11874a; --green-ink: #ffffff;
+    --chip: #2a2622; --warn-bg: #3a2f10; --warn-ink: #f5dc9a; color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --bg: #0f1613; --surface: #17211c; --ink: #e9efe9; --muted: #a2b0a8; --line: #2a3832;
-  --pitch: #0b3a2b; --pitch-ink: #eef4ee; --gold: #f2b928; --gold-ink: #1d1500;
-  --chip: #22302a; --warn-bg: #3a2f10; --warn-ink: #f5dc9a; color-scheme: dark;
+  --bg: #0f0e0d; --surface: #1b1917; --ink: #f2ede5; --muted: #b3aa9c; --line: #2f2b26;
+  --pitch: #070606; --pitch-ink: #f7f3ea; --gold: #f5c02a; --gold-ink: #1f1600;
+  --red: #e0384f; --green: #11874a; --green-ink: #ffffff;
+  --chip: #2a2622; --warn-bg: #3a2f10; --warn-ink: #f5dc9a; color-scheme: dark;
 }
 * { box-sizing: border-box; }
 body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 17px; line-height: 1.55; }
@@ -70,8 +76,11 @@ nav.main a[aria-current="page"] { opacity: 1; box-shadow: inset 0 -3px 0 var(--g
 /* Hero */
 .hero { background: var(--pitch); color: var(--pitch-ink); position: relative; overflow: hidden; }
 .hero .wrap { padding-block: 56px 64px; display: grid; gap: 22px; position: relative; }
-.hero .lanes { position: absolute; inset: 0; background: repeating-linear-gradient(180deg, transparent 0 46px, rgba(255,255,255,.07) 46px 48px); pointer-events: none; }
-.hero .lanes::after { content: ""; position: absolute; top: 0; bottom: 0; right: 14%; width: 3px; background: rgba(255,255,255,.12); }
+.hero .lanes { position: absolute; top: 0; bottom: 0; right: 0; width: 42%; pointer-events: none; opacity: .55;
+  background: repeating-linear-gradient(0deg, transparent 0 34px, rgba(0,0,0,.62) 34px 68px), var(--kente);
+  -webkit-mask-image: linear-gradient(to left, #000 20%, transparent); mask-image: linear-gradient(to left, #000 20%, transparent); }
+.kente-band { height: 10px; background: var(--kente); }
+@media (max-width: 720px) { .hero .lanes { width: 100%; opacity: .18; } }
 .hero h1 span { color: var(--gold); }
 .hero .lede { color: var(--pitch-ink); opacity: .92; }
 .actions { display: flex; flex-wrap: wrap; gap: 10px; }
@@ -95,10 +104,10 @@ section.block + section.block { border-top: 1px solid var(--line); }
 .card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 18px 16px; display: grid; grid-template-rows: auto auto 1fr auto; gap: 10px; min-width: 0; }
 .card .meta { display: flex; flex-wrap: wrap; gap: 6px; }
 .chip { font-size: .8rem; font-weight: 600; background: var(--chip); color: var(--ink); padding: 3px 9px; border-radius: 999px; white-space: nowrap; }
-.chip.sport { background: var(--pitch); color: var(--pitch-ink); }
+.chip.sport { background: var(--green); color: var(--green-ink); }
 .card p.desc { color: var(--muted); font-size: .98rem; }
 .card .links { display: flex; gap: 14px; flex-wrap: wrap; font-weight: 600; font-size: .95rem; padding-top: 4px; border-top: 1px dashed var(--line); }
-.card .links a { text-decoration-color: var(--gold); text-decoration-thickness: 2px; text-underline-offset: 3px; }
+.card .links a { text-decoration-color: var(--red); text-decoration-thickness: 2px; text-underline-offset: 3px; }
 .card .links .none { color: var(--muted); font-weight: 500; }
 
 /* Directory controls */
@@ -113,7 +122,7 @@ section.block + section.block { border-top: 1px solid var(--line); }
 /* Stories */
 .story-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; display: grid; grid-template-rows: auto 1fr; min-width: 0; }
 .story-card .pic { aspect-ratio: 16 / 9; max-width: 100%; background: var(--pitch); color: var(--pitch-ink); display: grid; place-items: center; position: relative; overflow: hidden; }
-.story-card .pic::before { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(180deg, transparent 0 30px, rgba(255,255,255,.08) 30px 32px); }
+.story-card .pic::before { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 10px; background: var(--kente); }
 .story-card .pic span { position: relative; font-family: var(--display); font-weight: 800; font-size: 1.7rem; text-transform: uppercase; letter-spacing: .03em; padding: 0 16px; text-align: center; }
 .story-card .body { padding: 16px 18px 18px; display: grid; gap: 8px; align-content: start; }
 .tag-soon { justify-self: start; background: var(--gold); color: var(--gold-ink); font-weight: 700; font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; padding: 3px 8px; border-radius: 4px; }
@@ -123,14 +132,16 @@ section.block + section.block { border-top: 1px solid var(--line); }
 .two-col > * { min-width: 0; }
 ul.ticks { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
 ul.ticks li { padding-left: 28px; position: relative; }
-ul.ticks li::before { content: ""; position: absolute; left: 4px; top: .5em; width: 12px; height: 6px; border-left: 3px solid var(--gold); border-bottom: 3px solid var(--gold); transform: rotate(-45deg); }
+ul.ticks li::before { content: ""; position: absolute; left: 4px; top: .5em; width: 12px; height: 6px; border-left: 3px solid var(--green); border-bottom: 3px solid var(--green); transform: rotate(-45deg); }
 ol.steps { list-style: none; counter-reset: s; padding: 0; margin: 0; display: grid; gap: 14px; }
 ol.steps li { counter-increment: s; display: grid; grid-template-columns: 44px 1fr; gap: 12px; align-items: start; }
-ol.steps li::before { content: counter(s); font-family: var(--display); font-weight: 800; font-size: 1.5rem; width: 44px; height: 44px; border-radius: 50%; background: var(--pitch); color: var(--pitch-ink); display: grid; place-items: center; }
+ol.steps li::before { content: counter(s); font-family: var(--display); font-weight: 800; font-size: 1.5rem; width: 44px; height: 44px; border-radius: 50%; background: var(--red); color: #fff; display: grid; place-items: center; }
 .panel { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; display: grid; gap: 14px; }
 .placeholder { background: var(--warn-bg); color: var(--warn-ink); padding: 1px 6px; border-radius: 4px; }
 
-footer.site { background: var(--pitch); color: var(--pitch-ink); margin-top: 24px; }
+footer.site { background: var(--pitch); color: var(--pitch-ink); }
+.kente-band + footer.site, main + .kente-band { margin-top: 0; }
+main { padding-bottom: 24px; }
 footer.site .wrap { padding-block: 32px; display: flex; flex-wrap: wrap; gap: 16px 40px; justify-content: space-between; align-items: center; }
 footer.site nav { display: flex; gap: 18px; flex-wrap: wrap; }
 footer.site a { text-decoration: none; opacity: .85; }
@@ -158,7 +169,7 @@ footer.site small { opacity: .75; }
 <header class="site">
   <div class="wrap">
     <a class="brand" href="#home" aria-label="Black Sports Directory UK, home">
-      <svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><circle cx="15" cy="15" r="13" fill="none" stroke="currentColor" stroke-width="2.5"/><path d="M4 11h22M4 19h22" stroke="var(--gold)" stroke-width="2.5"/></svg>
+      <svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><defs><clipPath id="bm"><circle cx="16" cy="16" r="12.5"/></clipPath></defs><g clip-path="url(#bm)"><rect x="0" y="0" width="32" height="10.5" fill="var(--red)"/><rect x="0" y="10.5" width="32" height="11" fill="var(--gold)"/><rect x="0" y="21.5" width="32" height="11" fill="var(--green)"/></g><circle cx="16" cy="16" r="13.5" fill="none" stroke="currentColor" stroke-width="2"/></svg>
       Black Sports Directory UK
     </a>
     <nav class="main" aria-label="Main">
@@ -169,6 +180,7 @@ footer.site small { opacity: .75; }
     </nav>
   </div>
 </header>
+<div class="kente-band" aria-hidden="true"></div>
 
 <main id="app">
 
@@ -248,7 +260,7 @@ footer.site small { opacity: .75; }
           <h1 style="font-size:clamp(2.2rem,6vw,3.6rem)">Stories</h1>
           <p class="lede">Conversations with the people building Black-led sport in the UK: the founders, coaches and members behind the clubs in our directory. New stories twice a month.</p>
         </div>
-        <div class="grid" id="stories"></div>
+        <div class="grid" id="story-grid"></div>
         <div class="panel" style="margin-top:28px">
           <h3>Want to be featured?</h3>
           <p>If your club, crew or business has a story to tell, we'd love to hear it. <a data-form href="#">Get in touch</a>.</p>
@@ -321,6 +333,7 @@ footer.site small { opacity: .75; }
   </div>
 </main>
 
+<div class="kente-band" aria-hidden="true"></div>
 <footer class="site">
   <div class="wrap">
     <div class="stack" style="gap:4px">
@@ -452,7 +465,7 @@ function renderHome() {
 }
 
 function renderStories() {
-  $("#stories").innerHTML = STORIES.map(st => `<article class="story-card">
+  $("#story-grid").innerHTML = STORIES.map(st => `<article class="story-card">
     <div class="pic"><span>${esc(st.org)}</span></div>
     <div class="body">${st.soon ? `<span class="tag-soon">Coming soon</span>` : ""}<h3>${esc(st.title)}</h3><p style="color:var(--muted)">An interview with ${esc(st.org)}.</p></div>
   </article>`).join("");
